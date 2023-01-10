@@ -197,9 +197,10 @@ def record(secretapikey, apikey, args):
 
 
 def run(args):
+    import os
     if args['ping'] or args['record']:
-        secretapikey = load_file(args['--secretapikey'])
-        apikey = load_file(args['--apikey'])
+        secretapikey = os.environ['PORKBUN_SECRET']
+        apikey = os.environ['PORKBUN_PUBLIC']
         if args['ping']:
             ping(secretapikey, apikey)
         else:
